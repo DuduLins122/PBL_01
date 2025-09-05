@@ -61,34 +61,30 @@ public class FloodFill {
     public BufferedImage withStack(int startX, int startY, int newColor, int stepInterval, String framesDir) {
         BufferedImage canvas = copy(original);
         int targetColor = canvas.getRGB(startX, startY);
-        if (targetColor == newColor) return canvas; // nada a fazer
+        if (targetColor == newColor) return canvas; 
 
         LinkedStack<Pixel> stack = new LinkedStack<>();
         stack.push(new Pixel(startX, startY));
 
         int painted = 0;
         int frame = 0;
-        saveFrame(canvas, framesDir, frame++); // estado inicial
+        saveFrame(canvas, framesDir, frame++); 
 
         while (!stack.isEmpty()) {
             Pixel p = stack.pop();
 
             if (p.x < 0 || p.x >= width || p.y < 0 || p.y >= height) {
-                // fora da matriz, ignorar
                 continue;
             }
 
-            // checa cor alvo (somente pinta se igual à cor de fundo guardada)
             if (canvas.getRGB(p.x, p.y) != targetColor) {
-                // cor diferente da região alvo, ignorar
                 continue;
             }
 
-            // pinta
+            
             canvas.setRGB(p.x, p.y, newColor);
             painted++;
 
-            // empilha vizinhos (4-neighborhood)
             stack.push(new Pixel(p.x + 1, p.y));
             stack.push(new Pixel(p.x - 1, p.y));
             stack.push(new Pixel(p.x, p.y + 1));
@@ -99,7 +95,6 @@ public class FloodFill {
             }
         }
 
-        // frame final
         saveFrame(canvas, framesDir, frame++);
         return canvas;
     }
@@ -144,7 +139,6 @@ public class FloodFill {
         return canvas;
     }
 
-    /* Utilitário: exporta a imagem final */
     public static void saveImage(BufferedImage img, String path) {
         try {
             File f = new File(path);
