@@ -58,11 +58,10 @@ public class Main {
         try { return Integer.parseInt(s); } catch (Exception e) { return def; }
     }
 
-    /** Converte "#RRGGBB" ou "RRGGBB" para ARGB com alpha 255. */
     private static int parseHexColor(String hex) {
         String h = hex.trim();
         if (h.startsWith("#")) h = h.substring(1);
-        if (h.length() != 6) return 0xFF9B30FF; // roxo padrão
+        if (h.length() != 6) return 0xFF9B30FF; 
         int rgb = Integer.parseInt(h, 16);
         return 0xFF000000 | rgb;
     }
