@@ -12,8 +12,8 @@ package com.floodfill.structures;
  */
 public class LinkedQueue<E> {
 
-    private Node<E> front; // primeiro
-    private Node<E> rear;  // último
+    private Node<E> front; 
+    private Node<E> rear;  
     private int size;
 
     public LinkedQueue() {
@@ -28,8 +28,8 @@ public class LinkedQueue<E> {
             front = n;
             rear = n;
         } else {
-            rear.next = n; // o antigo último aponta para o novo nó
-            rear = n;      // atualizamos o último
+            rear.next = n; 
+            rear = n;      
         }
         size++;
     }
@@ -37,8 +37,8 @@ public class LinkedQueue<E> {
     public E dequeue() {
         if (isEmpty()) return null;
         E e = front.element;
-        front = front.next;   // movemos o primeiro para o próximo
-        if (front == null) {  // se esvaziou, rear também vira null
+        front = front.next;   
+        if (front == null) {  
             rear = null;
         }
         size--;
