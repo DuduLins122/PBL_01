@@ -21,15 +21,15 @@ public class LinkedStack<E> {
 
     public void push(E e) {
         Node<E> n = new Node<>(e);
-        n.next = top;     // novo nó aponta para o antigo topo
-        top = n;          // topo passa a ser o novo nó
+        n.next = top;     
+        top = n;         
         size++;
     }
 
     public E pop() {
         if (isEmpty()) return null;
-        E e = top.element;   // guardamos o elemento do topo
-        top = top.next;      // movemos o topo para o nó anterior
+        E e = top.element;   
+        top = top.next;      
         size--;
         return e;
     }
